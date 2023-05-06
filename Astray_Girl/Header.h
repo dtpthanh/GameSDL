@@ -1,11 +1,25 @@
 #pragma once
 
+#include <vector>
 #include <iostream>
 #include <SDL.h>
 #include <SDL_mixer.h>
-#include <vector>
 #include <SDL_image.h>
 #include <SDL_ttf.h>
 
-Uint32 frame_start = SDL_GetTicks();
-Uint32 frame_time = SDL_GetTicks() - frame_start;
+
+bool isRunning = true;
+SDL_Window *window = nullptr;
+SDL_Renderer *renderer = nullptr;
+
+void loadTextures();
+void init();
+static SDL_Texture *bck;
+
+SDL_Texture* loadTex(const char* path) {
+    SDL_Surface *tmpSurface = IMG_Load(path);
+    SDL_Texture *tex = SDL_CreateTextureFromSurface(renderer, tmpSurface);
+
+    SDL_FreeSurface(tmpSurface);
+    return tex;
+}

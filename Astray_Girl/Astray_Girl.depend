@@ -10,3 +10,35 @@
 	<SDL_image.h>
 	<SDL_ttf.h>
 
+1683395223 source:c:\users\thanh\desktop\gamesdl\astray_girl\main.cpp
+	"Header.h"
+	"Character.h"
+	"Player.h"
+	"Goblin.h"
+	"Skeleton.h"
+
+1683392746 c:\users\thanh\desktop\gamesdl\astray_girl\header.h
+	<vector>
+	<iostream>
+	<SDL.h>
+	<SDL_mixer.h>
+	<SDL_image.h>
+	<SDL_ttf.h>
+
+1683392746 c:\users\thanh\desktop\gamesdl\astray_girl\ttf.h
+
+1683392746 c:\users\thanh\desktop\gamesdl\astray_girl\character.h
+	"Header.h"
+
+1683392829 c:\users\thanh\desktop\gamesdl\astray_girl\player.h
+	"Header.h"
+	"Character.h"
+
+1683393104 c:\users\thanh\desktop\gamesdl\astray_girl\goblin.h
+	"Character.h"
+	"Header.h"
+
+1683392967 c:\users\thanh\desktop\gamesdl\astray_girl\skeleton.h
+	"Header.h"
+	"Character.h"
+
