@@ -1,0 +1,12 @@
+# depslib dependency file v1.0
+1683347299 source:c:\users\thanh\desktop\astray_girl\main.cpp
+	"Header.h"
+
+1683347316 c:\users\thanh\desktop\astray_girl\header.h
+	<iostream>
+	<SDL.h>
+	<SDL_mixer.h>
+	<vector>
+	<SDL_image.h>
+	<SDL_ttf.h>
+
