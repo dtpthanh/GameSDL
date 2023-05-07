@@ -3,6 +3,7 @@
 #include "Player.h"
 #include "Goblin.h"
 #include "Skeleton.h"
+#include "DrawText.h"
 
 Player player;
 Goblin goblin;
@@ -22,6 +23,7 @@ void init(){
     window = SDL_CreateWindow("Astray Girl", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 1226, 700, SDL_WINDOW_SHOWN);
     renderer = SDL_CreateRenderer(window, -1, 0);
     loadTextures();
+    TTF_Init();
 }
 
 void handle() {
@@ -43,6 +45,7 @@ void handle() {
         if(g_time==50) {
             goblin.state="idle";
             goblin.setPos(player.pos.xx()+900,435);
+            kills++;
         }
     }
 
@@ -54,6 +57,7 @@ void handle() {
         if(s_time==50) {
             skeleton.state="idle";
             skeleton.setPos(player.pos.xx()-850,435);
+            kills++;
         }
     }
 
@@ -89,35 +93,42 @@ void draw_bck() {
 }
 
 void render() {
+    if(deadCount<=7){
     SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
     SDL_RenderClear(renderer);
+
     draw_bck();
     player.draw();
     skeleton.draw();
     goblin.draw();
     hp.draw();
+    drawText(renderer, "Kills: ", 25, 1000, 20, 255, 255, 255, 0, 0, 0);
+    drawNumber(renderer, kills, 25, 1100, 20, 255, 255, 255, NULL, NULL, NULL);
     SDL_RenderPresent(renderer);
+    }
     //hien ket qua khi nhan vat het 7 mang
-//    if(deadCount>=7) {
-//        SDL_RenderClear(renderer);
-//        SDL_RenderPresent(renderer);
-//        draw_bck();
-//        SDL_Texture* menu = loadTex("menu.jpg");
-//        SDL_Rect rect = {0, 0, 106, 134};
-//        SDL_RenderCopy(renderer, menu, NULL, &rect);
-//    }
+    if(deadCount>7) {
+        SDL_RenderClear(renderer);
+        draw_bck();
+        SDL_Texture* menu = loadTex("menu.png");
+        SDL_Rect rect = {450, 100, 318, 450};
+        SDL_RenderCopy(renderer, menu, NULL, &rect);
+        SDL_RenderPresent(renderer);
+    }
 }
 
+
 //void Music() {
-//    Mix_OpenAudio(44100, AUDIO_S16SYS, 2, 1024);
+//    Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048);
 //    Mix_Chunk* sound = Mix_LoadWAV("Music.wav");
-//    Mix_PlayChannel(-1, sound, -1);
+//    Mix_PlayChannel(-1, sound, 10);
 //    while (Mix_Playing(-1)) {
-//       SDL_Delay(100);
+//        SDL_Delay(100);
 //    }
 //    Mix_FreeChunk(sound);
 //    Mix_CloseAudio();
 //}
+
 
 int main(int argc, char * argv []) {
     init();
@@ -129,6 +140,7 @@ int main(int argc, char * argv []) {
         handle();
         update();
         render();
+
 //        Music();
 
         int frame_time = SDL_GetTicks() - frame_start;

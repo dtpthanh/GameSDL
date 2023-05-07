@@ -40,11 +40,11 @@ struct Skeleton{
 
     void handle() {
         velo.x = 0;
-        if(s_pos.x - p_pos.x <= 0 && s_pos.x - p_pos.x >= -30) {
+        if(s_pos.x - p_pos.x <= 0 && s_pos.x - p_pos.x >= -10) {
             state = "attack";
             s_flip = true;
         }
-        else if(s_pos.x - p_pos.x < -30 && s_pos.x - p_pos.x >= -120) {
+        else if(s_pos.x - p_pos.x < -10 && s_pos.x - p_pos.x >= -120) {
             state = "attack";
             s_flip = false;
         }
@@ -64,7 +64,7 @@ struct Skeleton{
         }
         if(s_Dead) {
             state = "death";
-            s_time=0;
+            s_time = 0;
         }
     }
     void update() {

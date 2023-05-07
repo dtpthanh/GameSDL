@@ -4,6 +4,7 @@
 
 int offset;
 int p_time, g_time, s_time;
+int kills;
 
 bool flip, p_Hurt = false;  //flip nhan vat
 int deadCount;  //so lan nhan vat chet

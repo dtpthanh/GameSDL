@@ -31,7 +31,13 @@
 		<Compiler>
 			<Add option="-Wall" />
 		</Compiler>
+		<Unit filename="Character.h" />
+		<Unit filename="DrawText.h" />
+		<Unit filename="Goblin.h" />
 		<Unit filename="Header.h" />
+		<Unit filename="Player.h" />
+		<Unit filename="Skeleton.h" />
+		<Unit filename="Ttf.h" />
 		<Unit filename="main.cpp" />
 		<Extensions>
 			<lib_finder disable_auto="1" />
