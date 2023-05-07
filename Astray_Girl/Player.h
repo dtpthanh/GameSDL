@@ -82,8 +82,8 @@ struct Player {
         const Uint8 *keystate = SDL_GetKeyboardState(NULL);
 
         velo.x = 0;
-        if (keystate[SDL_SCANCODE_A]) velo.x -= 7;
-        if (keystate[SDL_SCANCODE_D]) velo.x += 7;
+        if (keystate[SDL_SCANCODE_A]) velo.x -= 5;
+        if (keystate[SDL_SCANCODE_D]) velo.x += 5;
         if (velo.xx() > 0) flip = false;
         if (velo.xx() < 0) flip = true;
 
@@ -122,12 +122,12 @@ struct Player {
             velo.y += 1;
         }
 
-        if (pos.x + offset > 560) {
-            offset = 560 - pos.x;
+        if (pos.x + offset > 860) {
+            offset = 860 - pos.x;
         }
 
-        if (pos.x + offset < 50  && pos.x >= 50) {
-            offset = 50 - pos.x;
+        if (pos.x + offset < 40  && pos.x >= 50) {
+            offset = 40 - pos.x;
         }
 
         else if(pos.x < -80) {pos.x = -80; offset = 0;}

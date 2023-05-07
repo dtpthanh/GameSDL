@@ -52,13 +52,13 @@ struct Goblin{
         else if(g_pos.x - p_pos.x >= -30  ) {
             state = "run";
             g_flip = true;
-            velo.x -= 3.5;
+            velo.x -= 4;
         }
         else if(g_pos.x - p_pos.x <= -50 )
         {
             state = "run";
             g_flip = false;
-            velo.x += 3.5;
+            velo.x += 4;
         }
         else {
             state = "idle";

@@ -4,17 +4,21 @@
 #include "Goblin.h"
 #include "Skeleton.h"
 #include "DrawText.h"
+#include "GameOver.h"
 
 Player player;
 Goblin goblin;
 Skeleton skeleton;
 HP hp;
+Button button1;
+
 
 void loadTextures() {
     player.init();
     goblin.init();
     skeleton.init();
     hp.init();
+    button1.LoadTextures(renderer, "Button1.png", "Button2.png");
     bck = loadTex("Background.png");
 }
 
@@ -27,7 +31,6 @@ void init(){
 }
 
 void handle() {
-    SDL_Event event;
     if (SDL_PollEvent(&event)) {
         if (event.type == SDL_QUIT) {
             isRunning = false;
@@ -37,6 +40,7 @@ void handle() {
     player.handle();
     goblin.handle();
     skeleton.handle();
+
     if(player.state=="fight" && ((((g_pos.x - p_pos.x >= -125 && g_pos.x - p_pos.x <=-80) || (g_pos.x - p_pos.x >= 10 && g_pos.x - p_pos.x <=50)) && flip != g_flip) || (g_pos.x - p_pos.x >= -80 && g_pos.x - p_pos.x <= 10))
                              && (g_pos.y - p_pos.y >= -50 && g_pos.y - p_pos.y <= 50) ) {
         g_Dead = true;
@@ -61,15 +65,15 @@ void handle() {
         }
     }
 
-    if( player.state != "fight" && (skeleton.state=="attack" || goblin.state=="attack")
+    if( ((player.state != "fight") || (player.state == "fight" && (flip != g_flip || flip != s_flip))) && (skeleton.state=="attack" || goblin.state=="attack")
                                 && (((g_pos.x - p_pos.x >= -125 && g_pos.x - p_pos.x <=50) && (g_pos.y - p_pos.y >= -50 && g_pos.y - p_pos.y <= 50))
                                 || ((s_pos.x - p_pos.x >= -125 && s_pos.x - p_pos.x <=50) && (s_pos.y - p_pos.y >= -50 && s_pos.y - p_pos.y <= 50)))
-                                && (goblin.src.x == 750 || skeleton.src.x == 750) ) {
+                                && (goblin.src.x == 750 || skeleton.src.x == 1200) ) {
         p_Hurt = true;
         player.state = "hurt";
 
         if(player.state=="hurt") p_time+=5;
-        if(p_time==50) {
+        if(p_time==30) {
             player.state="idle";
             deadCount++;
         }
@@ -81,6 +85,8 @@ void update() {
     goblin.update();
     skeleton.update();
     hp.update();
+    button1.SetPosition(500, 420, 220, 100);
+    button1.HandleEvent(event);
 }
 
 //ve background
@@ -93,7 +99,7 @@ void draw_bck() {
 }
 
 void render() {
-    if(deadCount<=7){
+    if(deadCount<7){
     SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
     SDL_RenderClear(renderer);
 
@@ -107,29 +113,19 @@ void render() {
     SDL_RenderPresent(renderer);
     }
     //hien ket qua khi nhan vat het 7 mang
-    if(deadCount>7) {
+    if(deadCount>=7) {
+        player.setPos(500, 480);    //dat lai vi tri nhan vat
+        goblin.setPos(player.pos.xx()+900,435);     //dat lai vi tri goblin
+        skeleton.setPos(player.pos.xx()-850,435);   //dat lai vi tri skeleton
         SDL_RenderClear(renderer);
         draw_bck();
-        SDL_Texture* menu = loadTex("menu.png");
-        SDL_Rect rect = {450, 100, 318, 450};
-        SDL_RenderCopy(renderer, menu, NULL, &rect);
+        showResults();  //hien thi ket qua
+        button1.Render(renderer);
         SDL_RenderPresent(renderer);
     }
 }
 
-
-//void Music() {
-//    Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048);
-//    Mix_Chunk* sound = Mix_LoadWAV("Music.wav");
-//    Mix_PlayChannel(-1, sound, 10);
-//    while (Mix_Playing(-1)) {
-//        SDL_Delay(100);
-//    }
-//    Mix_FreeChunk(sound);
-//    Mix_CloseAudio();
-//}
-
-
+//ham main
 int main(int argc, char * argv []) {
     init();
 
@@ -140,8 +136,6 @@ int main(int argc, char * argv []) {
         handle();
         update();
         render();
-
-//        Music();
 
         int frame_time = SDL_GetTicks() - frame_start;
         if (FRAME_DELAY > frame_time) {

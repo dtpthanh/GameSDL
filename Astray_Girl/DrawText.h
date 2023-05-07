@@ -16,9 +16,9 @@ void drawText (SDL_Renderer* renderer, char* string, int size, int x, int y, int
 }
 
 void drawNumber (SDL_Renderer* renderer, int number, int size, int x, int y, int fR, int fG, int fB, int bR, int bG, int bB) {
-    char* str;
+    char str[10];
     sprintf(str, "%d", number);
-    TTF_Font* font = TTF_OpenFont("Roboto.ttf", size);
+    TTF_Font* font = TTF_OpenFont("arial.ttf", size);
     SDL_Color foregroundColor = { fR, fG, fB };
     SDL_Color backgroundColor = { bR, bG, bB };
     SDL_Surface* textSurface = TTF_RenderText_Shaded (font, str, foregroundColor, backgroundColor);

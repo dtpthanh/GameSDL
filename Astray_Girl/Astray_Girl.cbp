@@ -33,6 +33,7 @@
 		</Compiler>
 		<Unit filename="Character.h" />
 		<Unit filename="DrawText.h" />
+		<Unit filename="GameOver.h" />
 		<Unit filename="Goblin.h" />
 		<Unit filename="Header.h" />
 		<Unit filename="Player.h" />

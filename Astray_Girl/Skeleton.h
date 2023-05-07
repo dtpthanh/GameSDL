@@ -51,13 +51,13 @@ struct Skeleton{
         else if(s_pos.x - p_pos.x >= -50  ) {
             s_flip=true;
             state = "run";
-            velo.x -= 3.5;
+            velo.x -= 4.6;
         }
         else if(s_pos.x - p_pos.x <= -50 )
         {
             s_flip=false;
             state = "run";
-            velo.x += 3.5;
+            velo.x += 4.6;
         }
         else {
             state = "idle";

@@ -12,7 +12,7 @@
 bool isRunning = true;
 SDL_Window *window = nullptr;
 SDL_Renderer *renderer = nullptr;
-
+SDL_Event event;
 void loadTextures();
 void init();
 static SDL_Texture *bck;
@@ -24,3 +24,4 @@ SDL_Texture* loadTex(const char* path) {
     SDL_FreeSurface(tmpSurface);
     return tex;
 }
+
