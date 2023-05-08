@@ -44,7 +44,7 @@ struct Skeleton{
             state = "attack";
             s_flip = true;
         }
-        else if(s_pos.x - p_pos.x < -10 && s_pos.x - p_pos.x >= -120) {
+        else if(s_pos.x - p_pos.x < -10 && s_pos.x - p_pos.x >= -110) {
             state = "attack";
             s_flip = false;
         }

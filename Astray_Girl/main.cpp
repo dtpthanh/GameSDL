@@ -18,7 +18,7 @@ void loadTextures() {
     goblin.init();
     skeleton.init();
     hp.init();
-    button1.LoadTextures(renderer, "Button1.png", "Button2.png");
+    button1.LoadTextures(renderer, "Button1.png", "Button2.png" );
     bck = loadTex("Background.png");
 }
 
@@ -66,16 +66,17 @@ void handle() {
     }
 
     if( ((player.state != "fight") || (player.state == "fight" && (flip != g_flip || flip != s_flip))) && (skeleton.state=="attack" || goblin.state=="attack")
-                                && (((g_pos.x - p_pos.x >= -125 && g_pos.x - p_pos.x <=50) && (g_pos.y - p_pos.y >= -50 && g_pos.y - p_pos.y <= 50))
+                                && (((g_pos.x - p_pos.x >= -125 && g_pos.x - p_pos.x <=60) && (g_pos.y - p_pos.y >= -50 && g_pos.y - p_pos.y <= 50))
                                 || ((s_pos.x - p_pos.x >= -125 && s_pos.x - p_pos.x <=50) && (s_pos.y - p_pos.y >= -50 && s_pos.y - p_pos.y <= 50)))
                                 && (goblin.src.x == 750 || skeleton.src.x == 1200) ) {
         p_Hurt = true;
         player.state = "hurt";
 
         if(player.state=="hurt") p_time+=5;
-        if(p_time==30) {
+        if(p_time==45) {
             player.state="idle";
             deadCount++;
+            p_time = 0;
         }
     }
 }
@@ -109,7 +110,7 @@ void render() {
     goblin.draw();
     hp.draw();
     drawText(renderer, "Kills: ", 25, 1000, 20, 255, 255, 255, 0, 0, 0);
-    drawNumber(renderer, kills, 25, 1100, 20, 255, 255, 255, NULL, NULL, NULL);
+    drawNumber(renderer, kills, 25, 1100, 20, 255, 255, 255, 0, 0, 0);
     SDL_RenderPresent(renderer);
     }
     //hien ket qua khi nhan vat het 7 mang

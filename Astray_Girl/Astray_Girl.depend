@@ -10,7 +10,7 @@
 	<SDL_image.h>
 	<SDL_ttf.h>
 
-1683476827 source:c:\users\thanh\desktop\gamesdl\astray_girl\main.cpp
+1683524551 source:c:\users\thanh\desktop\gamesdl\astray_girl\main.cpp
 	"Header.h"
 	"Character.h"
 	"Player.h"
@@ -19,7 +19,7 @@
 	"DrawText.h"
 	"GameOver.h"
 
-1683476655 c:\users\thanh\desktop\gamesdl\astray_girl\header.h
+1683524475 c:\users\thanh\desktop\gamesdl\astray_girl\header.h
 	<vector>
 	<iostream>
 	<stdio.h>
@@ -30,24 +30,24 @@
 
 1683392746 c:\users\thanh\desktop\gamesdl\astray_girl\ttf.h
 
-1683447614 c:\users\thanh\desktop\gamesdl\astray_girl\character.h
+1683524475 c:\users\thanh\desktop\gamesdl\astray_girl\character.h
 	"Header.h"
 
-1683471401 c:\users\thanh\desktop\gamesdl\astray_girl\player.h
-	"Header.h"
-	"Character.h"
-
-1683475132 c:\users\thanh\desktop\gamesdl\astray_girl\goblin.h
-	"Character.h"
-	"Header.h"
-
-1683471751 c:\users\thanh\desktop\gamesdl\astray_girl\skeleton.h
+1683524551 c:\users\thanh\desktop\gamesdl\astray_girl\player.h
 	"Header.h"
 	"Character.h"
 
-1683459843 c:\users\thanh\desktop\gamesdl\astray_girl\drawtext.h
+1683524475 c:\users\thanh\desktop\gamesdl\astray_girl\goblin.h
+	"Character.h"
 	"Header.h"
 
-1683476729 c:\users\thanh\desktop\gamesdl\astray_girl\gameover.h
+1683524626 c:\users\thanh\desktop\gamesdl\astray_girl\skeleton.h
+	"Header.h"
+	"Character.h"
+
+1683524475 c:\users\thanh\desktop\gamesdl\astray_girl\drawtext.h
+	"Header.h"
+
+1683524475 c:\users\thanh\desktop\gamesdl\astray_girl\gameover.h
 	"Header.h"
 

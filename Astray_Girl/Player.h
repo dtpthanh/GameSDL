@@ -5,7 +5,7 @@
 
 struct HP{
     Pair pos;
-    SDL_Rect src, dest;
+    SDL_Rect src, dest; //vi tri va kich thuoc
     int HP_n;
     SDL_Texture *HP;
     void init(){
@@ -105,7 +105,6 @@ struct Player {
         }
         if(p_Hurt==true) {
             state = "hurt";
-            p_time = 0;
         }
     }
 
@@ -126,7 +125,7 @@ struct Player {
             offset = 860 - pos.x;
         }
 
-        if (pos.x + offset < 40  && pos.x >= 50) {
+        else if (pos.x + offset < 40  && pos.x >= 50) {
             offset = 40 - pos.x;
         }
 
